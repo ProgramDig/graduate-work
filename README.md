@@ -1,4 +1,4 @@
-# Graduate-work
+# Graduate-work (MERN)
 
 ## Directory structure
 
