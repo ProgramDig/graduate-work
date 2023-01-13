@@ -30,7 +30,7 @@ Server
 ```bash
   cd ./server
   npm install
-  npm run dev 
+  npm run server 
 ```
 
 Client
@@ -38,5 +38,5 @@ Client
 ```bash
   cd ./server/client/
   npm install
-  npm run start 
+  npm run client 
 ```
