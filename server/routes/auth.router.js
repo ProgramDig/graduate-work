@@ -6,6 +6,7 @@ const validation = require('../middleware/auth-valid-middleware')
 
 const router = new Router()
 
+// api/auth/..
 router.post('/registration', validation, authController.registration)
 router.post('/login', authController.login)
 

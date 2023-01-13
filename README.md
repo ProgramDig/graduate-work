@@ -14,7 +14,7 @@
 │   ├── models
 │   ├── routes
 │   ├── services
-│   ├── index.js
+│   ├── auth.router.js
 │   ├── package-lock.json
 │   └── package.json 
 ├──.gitignore

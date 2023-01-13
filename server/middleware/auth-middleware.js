@@ -5,7 +5,10 @@ module.exports = function(req, res, next) {
         next()
     }
     try {
-        const token = req.headers.authorization.split(' ')[1]
+        let token;
+        if(req.headers.authorization) {
+            token = req.headers.authorization.split(' ')[1]
+        }
         if(!token) {
             return res.status(403).json({message: 'Користувач не авторизований.'})
         }
@@ -13,7 +16,7 @@ module.exports = function(req, res, next) {
         req.user = decodedToken
         next()
     } catch (e) {
-        console.log(e)
+        console.log(`Server error \n${e.message}`)
         return res.status(403).json({message: 'Користувач не авторизований.'})
     }
 }
