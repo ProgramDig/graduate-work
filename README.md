@@ -30,13 +30,26 @@ Server
 ```bash
   cd ./server
   npm install
+  
   npm run server 
 ```
 
 Client
 
 ```bash
-  cd ./server/client/
+  cd ./server/client
   npm install
+  
   npm run client 
+```
+OR
+
+```bash
+  cd ./server
+  npm install
+  
+  cd ./client
+  npm install
+  
+  npm run dev
 ```
