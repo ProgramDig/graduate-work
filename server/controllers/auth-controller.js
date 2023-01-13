@@ -7,11 +7,13 @@ const User = require('../models/user-model')
 class AuthController {
     async registration(req, res) {
         try {
-            const validateErrors = validationResult(req)
-            if(!validateErrors.isEmpty()) {
-                return res.status(400).json({message: 'Помилка при реєстрації', validateErrors})
+            const errors = validationResult(req)
+            if(!errors.isEmpty()) {
+                return res.status(400).json({message: 'Помилка при реєстрації', errors: errors.array()})
             }
+
             const {login, password} = req.body
+
             const candidate = await User.findOne({login})
             if(candidate) {
                 return res.status(400).json({message: 'Цей користувач вже створений.'})
@@ -24,14 +26,20 @@ class AuthController {
 
             return  res.status(200).json({message:`Користувач з логіном ${login} створений!`})
         } catch (e) {
-            console.log(e)
-            return  res.status(400).json({message: 'Помилка при реєстрації.'})
+            console.log(e.message)
+            return  res.status(500).json({message: 'Помилка при реєстрації.'})
         }
     }
 
     async login(req, res) {
         try {
+            const errors = validationResult(req)
+            if(!errors.isEmpty()) {
+                return res.status(400).json({message: 'Помилка при вході в систему', errors: errors.array()})
+            }
+
             const {login, password} = req.body
+
             const user = await User.findOne({login})
             if(!user) {
                 return res.status(400).json({message: `Користувача з логіном ${login} не існує.`})
@@ -45,8 +53,8 @@ class AuthController {
             const token = generateAccessToken(user._id, user.roles)
             return res.status(200).json(token)
         } catch (e) {
-            console.log(e)
-            res.status(400).json({message: 'Промилка при вході.'})
+            console.log(e.message)
+            res.status(500).json({message: 'Промилка при вході.'})
         }
     }
 
@@ -55,7 +63,8 @@ class AuthController {
             const users = await User.find()
             res.json(users)
         } catch (e) {
-            console.log(e)
+            console.log(e.message)
+            res.status(500).json({message: 'Невідома помилка.'})
         }
     }
 }

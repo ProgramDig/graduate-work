@@ -2,13 +2,13 @@ const Router = require('express')
 const authController = require('../controllers/auth-controller')
 const authMiddleware = require('../middleware/auth-middleware')
 const roleMiddleware = require('../middleware/role-middleware')
-const validation = require('../middleware/auth-valid-middleware')
+const {regValidation, logValidation} = require('../middleware/auth-valid-middleware')
 
 const router = new Router()
 
 // api/auth/..
-router.post('/registration', validation, authController.registration)
-router.post('/login', authController.login)
+router.post('/registration', regValidation, authController.registration)
+router.post('/login', logValidation, authController.login)
 
 // role test
 // auth users role: USER
