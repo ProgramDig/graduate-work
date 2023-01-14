@@ -3,7 +3,7 @@ const express = require('express')
 const {connect, set} = require('mongoose')
 
 const PORT = process.env.PORT || 5000
-const app = express()
+const app = express({extended: true})
 
 app.use(express.json())
 app.use('/api/auth', require('./routes/auth.router'))

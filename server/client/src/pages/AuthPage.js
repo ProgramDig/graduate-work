@@ -13,8 +13,8 @@ const AuthPage = () => {
 
     const registrationHandler = async () => {
       try {
-          const data = await request('/api/auth/registration', 'POST', {...form})
-          console.log(data)
+          const data = await request('api/auth/registration', 'POST', {...form})
+          console.log('DATA: ', data)
       } catch (e) {}
     }
     return (
@@ -54,11 +54,14 @@ const AuthPage = () => {
                             <button
                                 className={"btn yellow darken-4"}
                                 style={{marginRight: 10}}
+                                disabled={loading}
                             >
                                 Вхід
                             </button>
                             <button
                                 className={"btn gray lighten-1 black-text"}
+                                onClick={registrationHandler}
+                                disabled={loading}
                             >
                                 Реєстрація
                             </button>

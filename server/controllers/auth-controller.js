@@ -7,6 +7,8 @@ const User = require('../models/user-model')
 class AuthController {
     async registration(req, res) {
         try {
+            // console.log('Reg-module - body:', req.body)
+
             const errors = validationResult(req)
             if(!errors.isEmpty()) {
                 return res.status(400).json({message: 'Помилка при реєстрації', errors: errors.array()})
