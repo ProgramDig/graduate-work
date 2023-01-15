@@ -11,7 +11,9 @@ class AuthController {
 
             const errors = validationResult(req)
             if(!errors.isEmpty()) {
-                return res.status(400).json({message: 'Помилка при реєстрації', errors: errors.array()})
+                return res.status(400).json(
+                    {message: 'Помилка при реєстрації. Некоректний логін або пароль', errors: errors.array()}
+                )
             }
 
             const {login, password} = req.body
