@@ -15,8 +15,10 @@ export const useHttp = () => {
             const response = await fetch(url, {method, body, headers})
             const data = response.json()
 
+
             if (!response.ok) {
-                throw new Error(data.message || 'Некоректна відповідь сервера.')
+                console.log(data) // I't know this
+                throw new Error(data.message || 'Невідома помилка.')
             }
             setLoading(false)
 
@@ -28,7 +30,7 @@ export const useHttp = () => {
         }
     }, [])
 
-    const clearError = () => setError(null)
+    const clearError = useCallback(() => setError(null),[])
 
     return {loading, request, error, clearError}
 }
