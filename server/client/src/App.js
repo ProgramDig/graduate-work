@@ -4,6 +4,7 @@ import {useAuth} from "./hooks/auth.hook";
 import {AuthContext} from "./context/authContext";
 import NavBar from "./components/NavBar";
 import 'materialize-css'
+import Footer from "./components/Footer";
 
 function App() {
     const {token, login, logout, userId, roles} = useAuth()
@@ -14,9 +15,10 @@ function App() {
             token, login, logout, userId, roles, isAuth
         }}>
             { !!roles && <NavBar/>}
-            <div className={'container'}>
+            <div className={'container'} style={{height: '70vh'}}>
                 {routes}
             </div>
+            { !!roles && <Footer/>}
         </AuthContext.Provider>
     );
 }
