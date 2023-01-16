@@ -50,13 +50,6 @@ export const useRoutes = roles => {
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
-        case 'USER':
-            return (
-                <Routes>
-                    <Route path={'/main'} element={<MainPage/>} exact/>
-                    <Route path={'*'} element={<Navigate to='/main' replace/>}/>
-                </Routes>
-            )
         default:
             return (
                 <Routes>

@@ -7,16 +7,14 @@ const User = require('../models/user-model')
 class AuthController {
     async registration(req, res) {
         try {
-            // console.log('Reg-module - body:', req.body)
-
             const errors = validationResult(req)
             if(!errors.isEmpty()) {
                 return res.status(400).json(
-                    {message: 'Помилка при реєстрації. Некоректний логін або пароль', errors: errors.array()}
+                    {message: 'Помилка при реєстрації. Некоректно введені дані.', errors: errors.array()}
                 )
             }
 
-            const {login, password} = req.body
+            const {email, login, password, fullName, role} = req.body
 
             const candidate = await User.findOne({login})
             if(candidate) {
@@ -24,11 +22,11 @@ class AuthController {
             }
 
             const hashPassword = await bcrypt.hash(password, 5)
-            const userRole = new Role({value: "USER"})
-            const user = new User({login, password: hashPassword, roles: [userRole.value]})
+            const userRole = new Role({value: role})
+            const user = new User({email, fullName, login, password: hashPassword, role: userRole})
             await user.save()
 
-            return  res.status(200).json({message:`Користувач з логіном ${login} створений!`})
+            return  res.status(200).json({message:`Користувач з такою поштою або логіном вже створений!`})
         } catch (e) {
             console.log(e.message)
             return  res.status(500).json({message: 'Помилка при реєстрації.'})

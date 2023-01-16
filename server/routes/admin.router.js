@@ -30,3 +30,5 @@ router.delete('/users', (req, res) => {
 router.get('/users?login=[admin]', (req, res) => {
 
 })
+
+module.exports = router
