@@ -1,10 +1,11 @@
-const {check, oneOf} = require("express-validator");
+const {check, oneOf, body} = require("express-validator");
 
-const MIN = 6
+const MIN = 3
 const MAX = 32
 
 const EMAIL_MESSAGE=`Некоректний email.`
 const LOGIN_MESSAGE=`Довжина логіна має бути більше ніж ${MIN} символів і менша ніж ${MAX}.`
+const LOGIN_NOT_EXIST_MESSAGE=`Логін не має містити символ '@'.`
 
 const FULL_NAME_MESSAGE=`Некоректно введений ПІБ. Приклад: Анохін Дмитро Леонідович.`
 const FULL_NAME_REGEXP=/^([a-zA-Z]+|[a-zA-Z]+\s{1}[a-zA-Z]{1,}|[a-zA-Z]+\s{1}[a-zA-Z]{3,}\s{1}[a-zA-Z]{1,})$/g

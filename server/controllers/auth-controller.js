@@ -16,9 +16,15 @@ class AuthController {
 
             const {email, login, password, fullName, role} = req.body
 
-            const candidate = await User.findOne({login})
-            if(candidate) {
-                return res.status(400).json({message: 'Цей користувач вже створений.'})
+            const candidateLogin = await User.findOne({login})
+            const candidateEmail = await User.findOne({email})
+
+            if(candidateLogin) {
+                return res.status(400).json({message: 'Користувач з таким лоліном вже створений.'})
+            }
+
+            if(candidateEmail) {
+                return res.status(400).json({message: 'Користувач з такою поштою вже створений.'})
             }
 
             const hashPassword = await bcrypt.hash(password, 5)
@@ -44,7 +50,7 @@ class AuthController {
 
             let user
 
-            if(nickname.includes('@')) {
+            if(nickname.includes('@')) { // simple validation
                 user = await User.findOne({email: nickname})
             } else {
                 user = await User.findOne({login: nickname})
@@ -58,9 +64,6 @@ class AuthController {
             if(!validPassword) {
                 return res.status(400).json({message: `Введений неправельний пароль`})
             }
-
-            const role = user.role
-            console.log(role)
 
             const token = generateAccessToken(user._id, user.role)
 

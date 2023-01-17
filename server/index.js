@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000
 const app = express({extended: true})
 
 app.use(express.json())
+
 app.use('/api/auth', require('./routes/auth.router'))
 app.use('/api/admin', require('./routes/admin.router'))
 
