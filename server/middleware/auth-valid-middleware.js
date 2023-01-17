@@ -1,4 +1,4 @@
-const {check} = require("express-validator");
+const {check, oneOf} = require("express-validator");
 
 const MIN = 6
 const MAX = 32
@@ -23,10 +23,20 @@ const regValidation = [
 ]
 
 const logValidation = [
-    check('login', `Введіть коректний логін.`)
-        .exists(),
-    check('password', `Ведіть коректний пароль`)
+    oneOf([
+        check('nickname')
+            .exists()
+            .isLength({ min: 3 })
+            .withMessage('Введіть коректний логін.'),
+
+        check('nickname')
+            .exists()
+            .isEmail()
+            .withMessage('Ведіть коректну пошту.'),
+    ]),
+    check('password')
         .exists()
-]
+        .withMessage('Ведіть коректний пароль.')
+];
 
 module.exports = {regValidation, logValidation}

@@ -22,11 +22,11 @@ class AuthController {
             }
 
             const hashPassword = await bcrypt.hash(password, 5)
-            const userRole = new Role({value: role})
-            const user = new User({email, fullName, login, password: hashPassword, role: userRole})
+            const {value} = new Role({value: role})
+            const user = new User({email, fullName, login, password: hashPassword, role: value})
             await user.save()
 
-            return  res.status(200).json({message:`Користувач з такою поштою або логіном вже створений!`})
+            return  res.status(200).json({message:`Користувач створений!`})
         } catch (e) {
             console.log(e.message)
             return  res.status(500).json({message: 'Помилка при реєстрації.'})
@@ -40,11 +40,18 @@ class AuthController {
                 return res.status(400).json({message: 'Помилка при вході в систему', errors: errors.array()})
             }
 
-            const {login, password} = req.body
+            const {nickname, password} = req.body // nickname - login or email
 
-            const user = await User.findOne({login})
+            let user
+
+            if(nickname.includes('@')) {
+                user = await User.findOne({email: nickname})
+            } else {
+                user = await User.findOne({login: nickname})
+            }
+
             if(!user) {
-                return res.status(400).json({message: `Користувача з логіном ${login} не існує.`})
+                return res.status(400).json({message: `Користувача '${nickname}' не існує.`})
             }
 
             const validPassword = await bcrypt.compare(password, user.password)
@@ -52,8 +59,12 @@ class AuthController {
                 return res.status(400).json({message: `Введений неправельний пароль`})
             }
 
-            const token = generateAccessToken(user._id, user.roles)
-            return res.status(200).json({token, user: user._id, roles: user.roles})
+            const role = user.role
+            console.log(role)
+
+            const token = generateAccessToken(user._id, user.role)
+
+            return res.status(200).json({token, user: user._id, role: user.role})
         } catch (e) {
             console.log(e.message)
             res.status(500).json({message: 'Промилка при вході.'})
