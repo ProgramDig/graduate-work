@@ -14,8 +14,8 @@ const NavBar = () => {
             <div className="nav-wrapper blue darken-1" style={{padding: '0 2rem'}}>
                 <span href="#" className="brand-logo">Лого</span>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <Links roles={auth.roles}/>
-                    <li><NavLink to={'/'} onClick={logoutHandler}>Вийти</NavLink></li>
+                    <Links role={auth.role}/>
+                    <li><NavLink to={'/auth'} onClick={logoutHandler}>Вийти</NavLink></li>
                 </ul>
             </div>
         </nav>

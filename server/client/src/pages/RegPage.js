@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
-import {redirect, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const RegPage = () => {
     const message = useMessage()

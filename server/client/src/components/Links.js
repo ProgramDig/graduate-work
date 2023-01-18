@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 const Links = (role) => {
-    switch (role) {
+    switch (role.role) {
         case 'ADMIN':
             return (
                 <>
@@ -37,6 +37,7 @@ const Links = (role) => {
                 </>
             )
         default:
+            console.log('default')
             return (
                 <>
                     <li><NavLink to={'/main'}>main</NavLink></li>
