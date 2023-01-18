@@ -6,13 +6,12 @@ import {AuthContext} from "../../context/authContext";
 
 const AuthPage = () => {
     const auth = useContext(AuthContext)
-
     const message = useMessage()
     const navigate = useNavigate()
     const {loading, request, error, clearError} = useHttp()
-
     const [form, setForm] = useState({
-        nickname: '', password: ''
+        nickname: '',
+        password: ''
     })
 
     useEffect(() => {
