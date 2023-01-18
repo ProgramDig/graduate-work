@@ -2,13 +2,15 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
 import {AuthContext} from "../context/authContext";
+import {useNavigate} from "react-router-dom";
 
 const AuthPage = () => {
     const auth = useContext(AuthContext)
     const message = useMessage()
+    const navigate = useNavigate()
     const {loading, request, error, clearError} = useHttp()
     const [form, setForm] = useState({
-        login: '', password: ''
+        nickname: '', password: ''
     })
 
     useEffect(() => {
@@ -18,13 +20,6 @@ const AuthPage = () => {
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
-    }
-
-    const registrationHandler = async () => {
-      try {
-          const data = await request('api/auth/registration', 'POST', {...form})
-          message(data.message)
-      } catch (e) {}
     }
 
     const loginHandler = async () => {
@@ -45,18 +40,16 @@ const AuthPage = () => {
                             <div>
                                 <div className="input-field">
                                     <input
-                                        placeholder="Введіть логін"
-                                        id="login"
+                                        id="nickname"
                                         type="text"
-                                        name="login"
+                                        name="nickname"
                                         onChange={changeHandler}
                                         className="yellow-input"
                                     />
-                                    <label htmlFor="login">Логін</label>
+                                    <label htmlFor="nickname">Логін або пошта</label>
                                 </div>
                                 <div className="input-field">
                                     <input
-                                        placeholder="Введіть пароль"
                                         id="password"
                                         type="password"
                                         name="password"
@@ -74,11 +67,13 @@ const AuthPage = () => {
                                 onClick={loginHandler}
                                 disabled={loading}
                             >
-                                Вхід
+                                Увійти
                             </button>
                             <button
                                 className={"btn gray lighten-1 black-text"}
-                                onClick={registrationHandler}
+                                onClick={() => {
+                                    navigate('/reg')
+                                }}
                                 disabled={loading}
                             >
                                 Реєстрація

@@ -6,6 +6,7 @@ import ScientificEmployerPage from "./pages/ScientificEmployerPage";
 import TeachPage from "./pages/TeachPage";
 import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/AuthPage";
+import RegPage from "./pages/RegPage";
 
 export const useRoutes = roles => {
     let role = ''
@@ -53,7 +54,8 @@ export const useRoutes = roles => {
         default:
             return (
                 <Routes>
-                    <Route path={'/'} element={<AuthPage/>} exact/>
+                    <Route path={'/reg'} element={<RegPage/>} exact/>
+                    <Route path={'/auth'} element={<AuthPage/>} exact/>
                     <Route path={'*'} element={<Navigate to='/' replace/>}/>
                 </Routes>
             )
