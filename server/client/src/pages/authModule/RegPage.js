@@ -12,7 +12,12 @@ const RegPage = () => {
     const [checkBoxVal, setCheckBoxVal] = useState('TEACHER')
 
     const [form, setForm] = useState({
-        email: '', login: '', password: '', rePassword: '', fullName: '', role: checkBoxVal
+        email: '',
+        login: '',
+        password: '',
+        rePassword: '',
+        fullName: '',
+        role: checkBoxVal
     })
 
     const setFormRoleHandler = (value) => {
@@ -23,14 +28,10 @@ const RegPage = () => {
         setCheckBoxVal(value)
     }
 
-
-
     useEffect(() => {
         message(error)
         clearError()
     }, [error, message, clearError])
-
-
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
@@ -40,8 +41,8 @@ const RegPage = () => {
         try {
             const data = await request('api/auth/registration', 'POST', {...form})
             message(data.message)
-        } catch (e) {
-        }
+            navigate('/auth')
+        } catch (e) {}
     }
 
     return (
