@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
 import {AuthContext} from "../context/authContext";
-import {useNavigate} from "react-router-dom";
 
 const AuthPage = () => {
     const auth = useContext(AuthContext)

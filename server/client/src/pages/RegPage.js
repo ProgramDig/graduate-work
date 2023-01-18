@@ -15,7 +15,7 @@ const RegPage = () => {
     const [checkedEmployer, setCheckedEmployer] = useState(false)
 
     const [form, setForm] = useState({
-        email: '', login: '', password: '', fullName: '', role: checkBoxVal
+        email: '', login: '', password: '', rePassword: '', fullName: '', role: checkBoxVal
     })
 
     useEffect(() => {

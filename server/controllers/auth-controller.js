@@ -14,7 +14,7 @@ class AuthController {
                 )
             }
 
-            const {email, login, password, fullName, role} = req.body
+            const {email, login, password, rePassword, fullName, role} = req.body
 
             const candidateLogin = await User.findOne({login})
             const candidateEmail = await User.findOne({email})
@@ -25,6 +25,10 @@ class AuthController {
 
             if(candidateEmail) {
                 return res.status(400).json({message: 'Користувач з такою поштою вже створений.'})
+            }
+
+            if(password !== rePassword) {
+                return res.status(400).json({message: 'Паролі не співпадають.'})
             }
 
             const hashPassword = await bcrypt.hash(password, 5)
