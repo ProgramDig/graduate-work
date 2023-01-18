@@ -2,12 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 
-const Links = (roles) => {
-    let role = ''
-    if (!!roles) {
-        role = roles.roles.toString()
-    }
-    console.log('22', role)
+const Links = (role) => {
     switch (role) {
         case 'ADMIN':
             return (

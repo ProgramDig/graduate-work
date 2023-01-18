@@ -6,9 +6,11 @@ import {useNavigate} from "react-router-dom";
 
 const AuthPage = () => {
     const auth = useContext(AuthContext)
+
     const message = useMessage()
     const navigate = useNavigate()
     const {loading, request, error, clearError} = useHttp()
+
     const [form, setForm] = useState({
         nickname: '', password: ''
     })
@@ -25,7 +27,7 @@ const AuthPage = () => {
     const loginHandler = async () => {
         try {
             const data = await request('api/auth/login', 'POST', {...form})
-            auth.login(data.token, data.userId, data.roles)
+            auth.login(data.token, data.userId, data.role)
             message(data.message)
         } catch (e) {}
     }

@@ -8,11 +8,7 @@ import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/AuthPage";
 import RegPage from "./pages/RegPage";
 
-export const useRoutes = roles => {
-    let role = ''
-    if (!!roles) {
-        role = roles.toString()
-    }
+export const useRoutes = role => {
     switch (role) {
         case 'ADMIN':
             return (
@@ -56,7 +52,7 @@ export const useRoutes = roles => {
                 <Routes>
                     <Route path={'/reg'} element={<RegPage/>} exact/>
                     <Route path={'/auth'} element={<AuthPage/>} exact/>
-                    <Route path={'*'} element={<Navigate to='/' replace/>}/>
+                    <Route path={'*'} element={<Navigate to='/auth' replace/>}/>
                 </Routes>
             )
     }
