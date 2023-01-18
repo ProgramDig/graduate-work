@@ -5,8 +5,8 @@ import DepartHeadPage from "./pages/DepartHeadPage";
 import ScientificEmployerPage from "./pages/ScientificEmployerPage";
 import TeachPage from "./pages/TeachPage";
 import MainPage from "./pages/MainPage";
-import AuthPage from "./pages/AuthPage";
-import RegPage from "./pages/RegPage";
+import AuthPage from "./pages/authModule/AuthPage";
+import RegPage from "./pages/authModule/RegPage";
 
 export const useRoutes = role => {
     switch (role) {

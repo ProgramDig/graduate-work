@@ -1,51 +1,36 @@
 import React, {useEffect, useState} from 'react';
-import {useHttp} from "../hooks/http.hook";
-import {useMessage} from "../hooks/message.hook";
+import {useHttp} from "../../hooks/http.hook";
+import {useMessage} from "../../hooks/message.hook";
 import {useNavigate} from "react-router-dom";
+import CheckBoxes from "../../components/CheckBoxes";
 
 const RegPage = () => {
+
     const message = useMessage()
     const navigate = useNavigate()
-
     const {loading, request, error, clearError} = useHttp()
-
     const [checkBoxVal, setCheckBoxVal] = useState('TEACHER')
-    const [checkedTeach, setCheckedTeach] = useState(true)
-    const [checkedHead, setCheckedHead] = useState(false)
-    const [checkedEmployer, setCheckedEmployer] = useState(false)
 
     const [form, setForm] = useState({
         email: '', login: '', password: '', rePassword: '', fullName: '', role: checkBoxVal
     })
+
+    const setFormRoleHandler = (value) => {
+      setForm({...form, role: value})
+    }
+
+    const setCheckBoxValHandler = (value) => {
+        setCheckBoxVal(value)
+    }
+
+
 
     useEffect(() => {
         message(error)
         clearError()
     }, [error, message, clearError])
 
-    const handleChangeCheckedTeach = (event) => {
-        setCheckedTeach(!checkedTeach)
-        setCheckedEmployer(false)
-        setCheckedHead(false)
-        setCheckBoxVal(event.target.value)
-        setForm({...form, role: checkBoxVal})
-    }
 
-    const handleChangeCheckedHead = (event) => {
-        setCheckedHead(!checkedHead)
-        setCheckedTeach(false)
-        setCheckedEmployer(false)
-        setCheckBoxVal(event.target.value)
-        setForm({...form, role: checkBoxVal})
-    }
-
-    const handleChangeCheckedEmployer = (event) => {
-        setCheckedEmployer(!checkedEmployer)
-        setCheckedTeach(false)
-        setCheckedHead(false)
-        setCheckBoxVal(event.target.value)
-        setForm({...form, role: checkBoxVal})
-    }
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
@@ -118,38 +103,7 @@ const RegPage = () => {
                                     />
                                     <label htmlFor="rePassword">Підтвердження паролю</label>
                                 </div>
-                                <div className={''}>
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" className="filled-in"
-                                                   name={'role'}
-                                                   value={'TEACHER'}
-                                                   checked={checkedTeach}
-                                                   onChange={handleChangeCheckedTeach}/>
-                                            <span style={{color: '#fff'}}>Викладач</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" className="filled-in"
-                                                   name={'role'}
-                                                   value={'DEPARTMENT_HEAD'}
-                                                   checked={checkedHead}
-                                                   onChange={handleChangeCheckedHead}/>
-                                            <span style={{color: '#fff'}}>Начальник кафедри</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" className="filled-in"
-                                                   name={'role'}
-                                                   value={'SCIENTIFIC_EMPLOYER'}
-                                                   checked={checkedEmployer}
-                                                   onChange={handleChangeCheckedEmployer}/>
-                                            <span style={{color: '#fff'}}>Представник навчального відділу</span>
-                                        </label>
-                                    </p>
-                                </div>
+                                <CheckBoxes setCheckBoxVal={setCheckBoxValHandler} setForm={setFormRoleHandler}/>
                             </div>
                         </div>
                         <div className="card-action">
