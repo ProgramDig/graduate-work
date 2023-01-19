@@ -49,18 +49,14 @@ class AuthController {
             const {nickname, password} = req.body // nickname - login or email
 
             let user
-            if (nickname.regex.match('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')){
+
+            if (nickname.includes('@')){ //(RFC5322) regex
                 user = await User.findOne({email: nickname})
-                console.log('user Find by email')
-            }else {
+                console.log(user)
+            }else { //nickname regex
                 user = await User.findOne({login: nickname})
-                console.log('user Find by email')
+                console.log(user)
             }
-            // if(nickname.includes('@')) { // simple validation
-            //     user = await User.findOne({email: nickname})
-            // } else {
-            //     user = await User.findOne({login: nickname})
-            // }
 
             if(!user) {
                 return res.status(400).json({message: `Користувача '${nickname}' не існує.`})
