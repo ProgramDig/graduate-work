@@ -9,7 +9,7 @@ router.get('/users', roleMiddleware('ADMIN'), adminController.getUsers)
 // get one
 router.get('/users/:nickname', roleMiddleware('ADMIN'), adminController.getUser)
 // delete one
-router.delete('/users/:nickname', roleMiddleware('ADMIN'),adminController.deleteUser)
+router.delete('/users', roleMiddleware('ADMIN'),adminController.deleteUser)
 
 
 // add new
