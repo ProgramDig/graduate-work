@@ -10,13 +10,11 @@ module.exports = function (roles) {
             if (!token) {
                 return res.status(403).json({message: 'Користувач не авторизований.'})
             }
-            const {roles: userRoles} = jwt.decode(token, process.env.JWT_ACCESS_SECRET)
+            const {role} = jwt.decode(token, process.env.JWT_ACCESS_SECRET)
             let hasRole = false
-            userRoles.forEach(role => {
-                if (roles.includes(role)) {
-                    hasRole = true
-                }
-            })
+            if(roles === role){
+                hasRole = true
+            }
             if (!hasRole) {
                 return  res.status(403).json({message: 'У вас недостатньо прав.'})
             }
