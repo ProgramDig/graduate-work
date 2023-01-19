@@ -17,7 +17,7 @@ function App() {
             token, login, logout, userId, role, isAuth
         }}>
             { !!role && <NavBar/>}
-            <div className={'container'} style={{height: '70vh'}}>
+            <div className={'container'} >
                 {routes}
             </div>
             { !!role && <Footer/>}

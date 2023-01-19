@@ -3,7 +3,6 @@ const {validationResult} = require('express-validator')
 const {generateAccessToken} = require('../services/token-service')
 const Role = require('../models/role-model')
 const User = require('../models/user-model')
-const userServise = require('../services/user-service')
 
 class AuthController {
     async registration(req, res) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Navigate, Route, Routes} from "react-router-dom";
-import AdminPage from "./pages/AdminPage";
+import AdminPage from "./pages/adminModule/AdminPage";
 import DepartHeadPage from "./pages/DepartHeadPage";
 import ScientificEmployerPage from "./pages/ScientificEmployerPage";
 import TeachPage from "./pages/TeachPage";
