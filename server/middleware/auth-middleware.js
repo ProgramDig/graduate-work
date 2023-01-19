@@ -17,6 +17,6 @@ module.exports = function(req, res, next) {
         next()
     } catch (e) {
         console.log(`Server error \n${e.message}`)
-        return res.status(403).json({message: 'Користувач не авторизований.'}) // server error(5..) . need fix
+        return res.status(403).json({message: 'Користувач не авторизований.'})
     }
 }
