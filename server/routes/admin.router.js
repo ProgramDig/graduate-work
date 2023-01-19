@@ -17,9 +17,7 @@ router.put('/users/:nickname', roleMiddleware('ADMIN'), (req, res) => {
 
 })
 // delete one
-router.delete('/users/:id', roleMiddleware('ADMIN'),(req, res) => {
-
-})
+router.delete('/users/:nickname', roleMiddleware('ADMIN'),adminController.deleteUser)
 // delete all
 router.delete('/users', roleMiddleware('ADMIN'),(req, res) => {
 
