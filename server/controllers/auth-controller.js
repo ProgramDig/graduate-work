@@ -20,7 +20,7 @@ class AuthController {
             const candidateEmail = await User.findOne({email})
 
             if(candidateLogin) {
-                return res.status(400).json({message: 'Користувач з таким лоліном вже створений.'})
+                return res.status(400).json({message: 'Користувач з таким логіном вже створений.'})
             }
 
             if(candidateEmail) {
@@ -54,10 +54,12 @@ class AuthController {
 
             let user
 
-            if(nickname.includes('@')) { // simple validation
+            if (nickname.includes('@')){ //(RFC5322) regex
                 user = await User.findOne({email: nickname})
-            } else {
+                console.log(user)
+            }else { //nickname regex
                 user = await User.findOne({login: nickname})
+                console.log(user)
             }
 
             if(!user) {
