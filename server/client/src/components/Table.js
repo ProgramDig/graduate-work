@@ -99,6 +99,18 @@ const Table = () => {
                 selectOnChangeHandle={selectOnChangeHandle}
             />
 
+            <div>
+                <div id="modal1" className="modal">
+                    <div className="modal-content">
+                        <h4>Modal Header</h4>
+                        <p>A bunch of text</p>
+                    </div>
+                    <div className="modal-footer">
+                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
+                </div>
+            </div>
+
             <div className={'Table'}>
                 <table>
                     <thead>
@@ -133,7 +145,8 @@ const Table = () => {
                                         </button>
                                         <button
                                             disabled={user.role === 'ADMIN'}
-                                            className={'btn blue darken-1'}
+                                            data-target="modal1"
+                                            className={'btn modal-trigger blue darken-1'}
                                             style={{marginRight: 5}}
                                         >
                                             <BiPencil/>
