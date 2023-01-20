@@ -10,14 +10,13 @@ router.get('/users', roleMiddleware('ADMIN'), adminController.getUsers)
 router.get('/users/:nickname', roleMiddleware('ADMIN'), adminController.getUser)
 // delete one
 router.delete('/users', roleMiddleware('ADMIN'),adminController.deleteUser)
+// update one
+router.put('/users', roleMiddleware('ADMIN'), adminController.updateOneUser)
 
 // add new
 router.post('/users', roleMiddleware('ADMIN'), (req, res) => {})
-// update one
-router.put('/users/:nickname', roleMiddleware('ADMIN'), (req, res) => {})
 // delete all
 router.delete('/users', roleMiddleware('ADMIN'),(req, res) => {})
-// get with login [admin]
-router.get('/users?login=[admin]', roleMiddleware('ADMIN'),(req, res) => {})
+
 
 module.exports = router

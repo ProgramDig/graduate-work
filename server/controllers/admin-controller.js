@@ -47,6 +47,20 @@ class AdminController {
             res.status(500).json({message: 'Помилка при поверненні списка користувачів.'})
         }
     }
+
+    async updateOneUser (req, res) {
+        try {
+            const {_id ,email, login, password, fullName, role} = req.body
+            const updateResult = await User.updateOne({_id},{email, login, password, fullName, role})
+            if (!updateResult) {
+                return res.status(400).json({message: 'Такого користувача не існує.'})
+            }
+            return res.status(200).json({message: `Дані користувача id:${_id} оновлено.`, isUpdate: true})
+        } catch (e) {
+            console.log(e.message)
+            res.status(500).json({message: 'Помилка при поверненні списка користувачів.'})
+        }
+    }
 }
 
 module.exports = new AdminController()
