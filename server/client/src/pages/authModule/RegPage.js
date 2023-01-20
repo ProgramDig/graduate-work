@@ -104,7 +104,11 @@ const RegPage = () => {
                                     />
                                     <label htmlFor="rePassword">Підтвердження паролю</label>
                                 </div>
-                                <CheckBoxes setCheckBoxVal={setCheckBoxValHandler} setForm={setFormRoleHandler}/>
+                                <CheckBoxes
+                                    setCheckBoxVal={setCheckBoxValHandler}
+                                    setForm={setFormRoleHandler}
+                                    color={'fff'}
+                                />
                             </div>
                         </div>
                         <div className="card-action">

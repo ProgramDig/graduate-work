@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const CheckBoxes = ({setCheckBoxVal, setForm}) => {
+const CheckBoxes = ({setCheckBoxVal, setForm, color}) => {
 
     const [checkedTeach, setCheckedTeach] = useState(true)
     const [checkedHead, setCheckedHead] = useState(false)
@@ -42,7 +42,7 @@ const CheckBoxes = ({setCheckBoxVal, setForm}) => {
                            value={'TEACHER'}
                            checked={checkedTeach}
                            onChange={handleChangeCheckedTeach}/>
-                    <span style={{color: '#fff'}}>Викладач</span>
+                    <span style={{color: color}}>Викладач</span>
                 </label>
             </p>
             <p>
@@ -52,7 +52,7 @@ const CheckBoxes = ({setCheckBoxVal, setForm}) => {
                            value={'DEPARTMENT_HEAD'}
                            checked={checkedHead}
                            onChange={handleChangeCheckedHead}/>
-                    <span style={{color: '#fff'}}>Начальник кафедри</span>
+                    <span style={{color: color}}>Начальник кафедри</span>
                 </label>
             </p>
             <p>
@@ -62,7 +62,7 @@ const CheckBoxes = ({setCheckBoxVal, setForm}) => {
                            value={'SCIENTIFIC_EMPLOYER'}
                            checked={checkedEmployer}
                            onChange={handleChangeCheckedEmployer}/>
-                    <span style={{color: '#fff'}}>Представник навчального відділу</span>
+                    <span style={{color: color}}>Представник навчального відділу</span>
                 </label>
             </p>
         </div>

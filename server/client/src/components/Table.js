@@ -6,6 +6,8 @@ import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
 import Loader from "./Loader";
 import Search from "./Search";
+import CheckBoxes from "./CheckBoxes";
+import Modal from "./Modal";
 
 
 const Table = () => {
@@ -66,7 +68,7 @@ const Table = () => {
         setSearch(query)
         let updateForm = [...form]
         updateForm = updateForm.filter((user) => {
-            switch (select){
+            switch (select) {
                 case '_id':
                     return user._id.toLowerCase().indexOf(query.toLowerCase()) !== -1
                 case 'login':
@@ -99,23 +101,13 @@ const Table = () => {
                 selectOnChangeHandle={selectOnChangeHandle}
             />
 
-            <div>
-                <div id="modal1" className="modal">
-                    <div className="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
-                    </div>
-                    <div className="modal-footer">
-                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
-                    </div>
-                </div>
-            </div>
+            <Modal/>
 
             <div className={'Table'}>
                 <table>
                     <thead>
                     <tr>
-                        <th>Ідентифікатор</th>
+                        {/*<th>Ідентифікатор</th>*/}
                         <th>ПІБ</th>
                         <th>Роль</th>
                         <th>Пошта</th>
@@ -126,47 +118,47 @@ const Table = () => {
                     </thead>
                     <tbody>
                     {filteredForm?.map((user) => {
-                            return (
-                                <tr key={user._id}>
-                                    <td>{user._id}</td>
-                                    <td>{user.fullName}</td>
-                                    <td>{user.role}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.login}</td>
-                                    <td>{user.isActivated ? 'Активовано' : 'Не активовано'}</td>
-                                    <td style={{display: 'flex'}}>
-                                        <button
-                                            disabled={user.role === 'ADMIN'}
-                                            className={'btn red darken-1'}
-                                            style={{marginRight: 5}}
-                                            onClick={() => deleteHandler(user._id)}
-                                        >
-                                            <BsFillTrashFill/>
-                                        </button>
-                                        <button
-                                            disabled={user.role === 'ADMIN'}
-                                            data-target="modal1"
-                                            className={'btn modal-trigger blue darken-1'}
-                                            style={{marginRight: 5}}
-                                        >
-                                            <BiPencil/>
-                                        </button>
-                                        <button
-                                            disabled={user.role === 'ADMIN'}
-                                            className={'btn green darken-2'}
-                                        >
-                                            <MdOutgoingMail/>
-                                        </button>
-                                    </td>
-                                </tr>
-                            )
-                        })
+                        return (
+                            <tr key={user._id}>
+                                {/*<td>{user._id}</td>*/}
+                                <td>{user.fullName}</td>
+                                <td>{user.role}</td>
+                                <td>{user.email}</td>
+                                <td>{user.login}</td>
+                                <td>{user.isActivated ? 'Активовано' : 'Не активовано'}</td>
+                                <td style={{display: 'flex'}}>
+                                    <button
+                                        disabled={user.role === 'ADMIN'}
+                                        className={'btn red darken-1'}
+                                        style={{marginRight: 5}}
+                                        onClick={() => deleteHandler(user._id)}
+                                    >
+                                        <BsFillTrashFill/>
+                                    </button>
+                                    <button
+                                        disabled={user.role === 'ADMIN'}
+                                        data-target="modal1"
+                                        className={'btn modal-trigger blue darken-1'}
+                                        style={{marginRight: 5}}
+                                    >
+                                        <BiPencil/>
+                                    </button>
+                                    <button
+                                        disabled={user.role === 'ADMIN'}
+                                        className={'btn green darken-2'}
+                                    >
+                                        <MdOutgoingMail/>
+                                    </button>
+                                </td>
+                            </tr>
+                        )
+                    })
                     }
                     </tbody>
                 </table>
             </div>
         </>
-    );
+);
 };
 
 export default Table;

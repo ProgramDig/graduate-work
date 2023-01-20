@@ -2,8 +2,8 @@ import React from 'react';
 
 const Search = ({search, searchOnChangeHandler, selectOnChangeHandle, select}) => {
     return (
-        <div style={{display:'flex', justifyContent: 'space-between'}}>
-            <div className="input-field col s6">
+        <div className="row">
+            <div className="input-field col s9">
                 <input
                     placeholder="Пошук"
                     id="first_name"
@@ -13,7 +13,7 @@ const Search = ({search, searchOnChangeHandler, selectOnChangeHandle, select}) =
                     onChange={searchOnChangeHandler}
                 />
             </div>
-            <div className="input-field col s12">
+            <div className="input-field col s3">
                 <select value={select} onChange={selectOnChangeHandle}>
                     <option value="" disabled selected>ПІБ</option>
                     <option value={"fullName"} >ПІБ</option>
