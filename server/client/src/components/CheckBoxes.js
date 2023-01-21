@@ -1,10 +1,32 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
-const CheckBoxes = ({setCheckBoxVal, setForm, color}) => {
+const CheckBoxes = ({checkBoxVal, setCheckBoxVal, setForm, color}) => {
 
     const [checkedTeach, setCheckedTeach] = useState(true)
     const [checkedHead, setCheckedHead] = useState(false)
     const [checkedEmployer, setCheckedEmployer] = useState(false)
+
+    useEffect(() => {
+        if (checkBoxVal){
+            switch (checkBoxVal){
+                case 'TEACHER':
+                    setCheckedTeach(true)
+                    setCheckedEmployer(false)
+                    setCheckedHead(false)
+                    return
+                case 'DEPARTMENT_HEAD':
+                    setCheckedHead(true)
+                    setCheckedTeach(false)
+                    setCheckedEmployer(false)
+                    return
+                case 'SCIENTIFIC_EMPLOYER':
+                    setCheckedEmployer(true)
+                    setCheckedTeach(false)
+                    setCheckedHead(false)
+                    return
+            }
+        }
+    },[checkBoxVal])
 
     const handleChangeCheckedTeach = (event) => {
         setCheckedTeach(true)

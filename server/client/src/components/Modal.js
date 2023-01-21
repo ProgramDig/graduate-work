@@ -1,11 +1,31 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CheckBoxes from "./CheckBoxes";
 
-const Modal = () => {
+const Modal = ({thisUser, updateUserHandler}) => {
     const [checkBoxVal, setCheckBoxVal] = useState('TEACHER')
+    const [fullName, setFullName] = useState('')
+    const [email, setEmail] = useState('')
+    const [login, setLogin] = useState('')
     const [updateUser, setUpdateUser] = useState({
         _id: 0, fullName: '', email: '', login: '', role: checkBoxVal
     })
+
+    useEffect(() => {
+        if(thisUser){
+            setUpdateUser({
+                _id: thisUser._id,
+                fullName: thisUser.fullName,
+                email: thisUser.email,
+                login: thisUser.login,
+                role: thisUser.role
+            })
+            setFullName(thisUser.fullName)
+            setEmail(thisUser.email)
+            setLogin(thisUser.login)
+            setCheckBoxVal(thisUser.role)
+        }
+    }, [thisUser])
+
     const setFormRoleHandler = (value) => {
         setUpdateUser({...updateUser, role: value})
     }
@@ -13,6 +33,27 @@ const Modal = () => {
     const setCheckBoxValHandler = (value) => {
         setCheckBoxVal(value)
     }
+
+    const changeFullNameHandler = event => {
+        setFullName(event.target.value)
+    }
+    const changeEmailNameHandler = event => {
+        setEmail(event.target.value)
+    }
+    const changeLoginNameHandler = event => {
+        setLogin(event.target.value)
+    }
+
+    const updateHandler = () => {
+        updateUserHandler({
+            _id: thisUser._id,
+            fullName: fullName,
+            email: email,
+            login: login,
+            role: checkBoxVal
+        })
+    }
+
     return (
         <div>
             <div id="modal1" className="modal">
@@ -21,21 +62,43 @@ const Modal = () => {
                         <form className="col s12">
                             <div className="row">
                                 <div className="input-field col s6">
-                                    <input  id="fullName" type="text" className="validate"/>
+                                    <input
+                                        id="fullName"
+                                        name="fullName"
+                                        type="text"
+                                        value={fullName}
+                                        className="validate"
+                                        onChange={changeFullNameHandler}
+                                    />
                                     <label htmlFor="fullName">ПІБ</label>
                                 </div>
                                 <div className="input-field col s6">
-                                    <input id="login" type="text" className="validate"/>
+                                    <input
+                                        id="login"
+                                        name="login"
+                                        type="text"
+                                        value={login}
+                                        className="validate"
+                                        onChange={changeLoginNameHandler}
+                                    />
                                     <label htmlFor="login">Логін</label>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input id="email" type="email" className="validate"/>
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        value={email}
+                                        className="validate"
+                                        onChange={changeEmailNameHandler}
+                                    />
                                     <label htmlFor="email">Пошта</label>
                                 </div>
                             </div>
                             <CheckBoxes
+                                checkBoxVal={checkBoxVal}
                                 setCheckBoxVal={setCheckBoxValHandler}
                                 setForm={setFormRoleHandler}
                                 color={'#000000'}
@@ -44,8 +107,19 @@ const Modal = () => {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button className="modal-close waves-effect waves-green btn-flat">Відміна</button>
-                    <button className="modal-close waves-effect waves-green btn-flat">Оновити</button>
+                    <button
+                        className="modal-close waves-effect waves-green btn-flat red darken-1"
+                        style={{marginRight: 10, color: '#fff'}}
+                    >
+                        Відміна
+                    </button>
+                    <button
+                        className="modal-close waves-effect waves-green btn-flat blue darken-1"
+                        style={{marginRight: 10, color: '#fff'}}
+                        onClick={updateHandler}
+                    >
+                        Оновити
+                    </button>
                 </div>
             </div>
         </div>

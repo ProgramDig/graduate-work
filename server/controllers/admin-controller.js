@@ -50,8 +50,8 @@ class AdminController {
 
     async updateOneUser (req, res) {
         try {
-            const {_id ,email, login, password, fullName, role} = req.body
-            const updateResult = await User.updateOne({_id},{email, login, password, fullName, role})
+            const {_id ,email, login, fullName, role} = req.body
+            const updateResult = await User.updateOne({_id},{email, login, fullName, role})
             if (!updateResult) {
                 return res.status(400).json({message: 'Такого користувача не існує.'})
             }

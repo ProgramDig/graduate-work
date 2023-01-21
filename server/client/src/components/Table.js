@@ -6,7 +6,6 @@ import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
 import Loader from "./Loader";
 import Search from "./Search";
-import CheckBoxes from "./CheckBoxes";
 import Modal from "./Modal";
 
 
@@ -84,6 +83,35 @@ const Table = () => {
         setFilterFrom(updateForm)
     }
 
+
+    const [thisUser, setThisUser] = useState(null)
+
+    const thisUserHandler = (event) => {
+        const id = event.target.value
+        const user = form.filter((user) => {
+            if(user._id === id){
+                return user
+            }
+        })[0]
+        setThisUser(user)
+    }
+
+    const [updateUser, setUpdateUser] = useState(null)
+
+    const updateHandler = async (user) => {
+        setUpdateUser(user)
+
+        const data = await request(
+            '/api/admin/users',
+            'PUT',
+            {...user, _id: user._id },
+            {"Authorization": `Bearer ${token}`}
+        )
+        if(data.isUpdate) {
+            message(data.message)
+        }
+    }
+
     return (
         <>
             <button
@@ -101,7 +129,7 @@ const Table = () => {
                 selectOnChangeHandle={selectOnChangeHandle}
             />
 
-            <Modal/>
+            <Modal thisUser={thisUser} updateUserHandler={updateHandler}/>
 
             <div className={'Table'}>
                 <table>
@@ -119,7 +147,7 @@ const Table = () => {
                     <tbody>
                     {filteredForm?.map((user) => {
                         return (
-                            <tr key={user._id}>
+                            <tr key={user._id} className={user._id}>
                                 {/*<td>{user._id}</td>*/}
                                 <td>{user.fullName}</td>
                                 <td>{user.role}</td>
@@ -138,6 +166,8 @@ const Table = () => {
                                     <button
                                         disabled={user.role === 'ADMIN'}
                                         data-target="modal1"
+                                        value={user._id}
+                                        onClick={thisUserHandler}
                                         className={'btn modal-trigger blue darken-1'}
                                         style={{marginRight: 5}}
                                     >
