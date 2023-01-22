@@ -12,7 +12,6 @@ router.get('/users/:nickname', roleMiddleware('ADMIN'), adminController.getUser)
 router.delete('/users', roleMiddleware('ADMIN'),adminController.deleteUser)
 // update one
 router.put('/users', roleMiddleware('ADMIN'), adminController.updateOneUser)
-
 // add new
 router.post('/users', roleMiddleware('ADMIN'), (req, res) => {})
 // delete all

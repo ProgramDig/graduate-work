@@ -10,7 +10,6 @@ class AdminController {
             return  res.status(500).json({message: 'Помилка при поверненні списка користувачів.'})
         }
     }
-
     async getUser(req, res) {
         try {
             const nickname = req.params.nickname
@@ -31,7 +30,6 @@ class AdminController {
             return  res.status(500).json({message: 'Помилка при поверненні списка користувачів.'})
         }
     }
-
     async deleteUser(req, res) {
         try {
             const id = req.body.id
@@ -47,7 +45,6 @@ class AdminController {
             res.status(500).json({message: 'Помилка при поверненні списка користувачів.'})
         }
     }
-
     async updateOneUser (req, res) {
         try {
             const {_id ,email, login, fullName, role} = req.body
