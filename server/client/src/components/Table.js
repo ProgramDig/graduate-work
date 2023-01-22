@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {BsFillTrashFill} from "react-icons/bs";
 import {BiPencil} from "react-icons/bi";
 import {MdOutgoingMail} from "react-icons/md";
@@ -54,14 +54,12 @@ const Table = () => {
 
 
     const [select, setSelect] = useState('')
-
     const selectOnChangeHandle = (event) => {
         setSelect(event.target.value)
     }
 
     const [search, setSearch] = useState('')
     const [filteredForm, setFilterFrom] = useState(form)
-
     const searchOnChangeHandler = (event) => {
         const query = event.target.value;
         setSearch(query)
@@ -83,11 +81,10 @@ const Table = () => {
         setFilterFrom(updateForm)
     }
 
-
     const [thisUser, setThisUser] = useState(null)
 
     const thisUserHandler = (event) => {
-        const id = event.target.value
+        const id = event.currentTarget.value
         const user = form.filter((user) => {
             if(user._id === id){
                 return user
@@ -97,7 +94,6 @@ const Table = () => {
     }
 
     const [updateUser, setUpdateUser] = useState(null)
-
     const updateHandler = async (user) => {
         setUpdateUser(user)
 
@@ -109,6 +105,7 @@ const Table = () => {
         )
         if(data.isUpdate) {
             message(data.message)
+            refreshHandler()
         }
     }
 
@@ -145,6 +142,14 @@ const Table = () => {
                     </tr>
                     </thead>
                     <tbody>
+                    {
+                        !filteredForm &&
+                        <div>
+                            <h2 className="center-align">
+                                Користувачів немає
+                            </h2>
+                        </div>
+                    }
                     {filteredForm?.map((user) => {
                         return (
                             <tr key={user._id} className={user._id}>

@@ -70,7 +70,7 @@ const Modal = ({thisUser, updateUserHandler}) => {
                                         className="validate"
                                         onChange={changeFullNameHandler}
                                     />
-                                    <label htmlFor="fullName">ПІБ</label>
+                                    <label htmlFor="fullName" className="active">ПІБ</label>
                                 </div>
                                 <div className="input-field col s6">
                                     <input
@@ -81,7 +81,7 @@ const Modal = ({thisUser, updateUserHandler}) => {
                                         className="validate"
                                         onChange={changeLoginNameHandler}
                                     />
-                                    <label htmlFor="login">Логін</label>
+                                    <label htmlFor="login" className="active">Логін</label>
                                 </div>
                             </div>
                             <div className="row">
@@ -94,7 +94,7 @@ const Modal = ({thisUser, updateUserHandler}) => {
                                         className="validate"
                                         onChange={changeEmailNameHandler}
                                     />
-                                    <label htmlFor="email">Пошта</label>
+                                    <label htmlFor="email" className="active">Пошта</label>
                                 </div>
                             </div>
                             <CheckBoxes
