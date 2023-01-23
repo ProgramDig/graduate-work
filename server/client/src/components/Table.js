@@ -109,6 +109,17 @@ const Table = () => {
         }
     }
 
+    const sendMessage = async (event) => {
+        const email = event.currentTarget.value
+        const data = await request(
+            '/api/activate',
+            'POST',
+            {email: email},
+            {"Authorization": `Bearer ${token}`}
+        )
+        message(data.message)
+    }
+
     return (
         <>
             <button
@@ -179,7 +190,9 @@ const Table = () => {
                                         <BiPencil/>
                                     </button>
                                     <button
-                                        disabled={user.role === 'ADMIN'}
+                                        disabled={user.role === 'ADMIN' || user.isActivated === true}
+                                        value={user.email}
+                                        onClick={sendMessage}
                                         className={'btn green darken-2'}
                                     >
                                         <MdOutgoingMail/>

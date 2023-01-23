@@ -11,8 +11,9 @@ class ActivateController {
                 return res.status(400).json({message: 'Такого користувача не існує.'})
             }
             const activationLink = uuid.v4()
-            const result = await mailService.setActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`)
-            return res.json(user, "result -", result)
+            await User.updateOne({_id: user._id}, {link: activationLink})
+            await mailService.setActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`)
+            return res.json({link: activationLink, message: `Лист на пошту ${user.email} відправлено!`})
         } catch (e) {
             console.log(e.message)
             return  res.status(500).json({message: 'Помилка при відправленні листа.'})
@@ -20,12 +21,12 @@ class ActivateController {
     }
     async activateAccount (req, res) {
         try {
-            const query = req.query
-            console.log(query)
+            const {link} = req.params
+            await User.updateOne({link}, {isActivated: true})
             return res.send('ok')
         } catch (e) {
             console.log(e.message)
-            return  res.status(500).json({message: 'Помилка при відправленні листа.'})
+            return  res.status(500).json({message: 'Помилка сервера.'})
         }
     }
 }
