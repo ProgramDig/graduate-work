@@ -1,3 +1,4 @@
+const {validationResult} = require("express-validator");
 const User = require('../models/user-model')
 
 class AdminController {
@@ -47,6 +48,12 @@ class AdminController {
     }
     async updateOneUser (req, res) {
         try {
+            const errors = validationResult(req)
+            if(!errors.isEmpty()) {
+                return res.status(400).json(
+                    {message: 'Помилка при реєстрації. Некоректно введені дані.', errors: errors.array()}
+                )
+            }
             const {_id ,email, login, fullName, role} = req.body
             const updateResult = await User.updateOne({_id},{email, login, fullName, role})
             if (!updateResult) {

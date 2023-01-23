@@ -45,4 +45,13 @@ const logValidation = [
         .withMessage('Ведіть коректний пароль.')
 ];
 
-module.exports = {regValidation, logValidation}
+const updateValidation = [
+    check('email', EMAIL_MESSAGE).matches(EMAIL_REGEX),
+    check('login', LOGIN_MESSAGE)
+        .isLength({min: MIN, max: MAX})
+        .matches(NICKNAME_REGEX)
+        .withMessage('Видаліть спецсимволи'),
+    check('fullName', FULL_NAME_MESSAGE).matches(FULL_NAME_REGEXP),
+];
+
+module.exports = {regValidation, logValidation, updateValidation}
