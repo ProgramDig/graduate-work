@@ -56,10 +56,8 @@ class AuthController {
 
             if (nickname.includes('@')){ //(RFC5322) regex
                 user = await User.findOne({email: nickname})
-                console.log(user)
             }else { //nickname regex
                 user = await User.findOne({login: nickname})
-                console.log(user)
             }
 
             if(!user) {
@@ -69,6 +67,10 @@ class AuthController {
             const validPassword = await bcrypt.compare(password, user.password)
             if(!validPassword) {
                 return res.status(400).json({message: `Введений неправельний пароль`})
+            }
+
+            if(!user.isActivated){
+                return res.status(400).json({message: `Аккаунт ${user.email} не активовано.`})
             }
 
             const token = generateAccessToken(user._id, user.role)
