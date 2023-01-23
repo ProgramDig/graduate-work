@@ -12,7 +12,9 @@ class ActivateController {
             }
             const activationLink = uuid.v4()
             await User.updateOne({_id: user._id}, {link: activationLink})
-            await mailService.setActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`)
+            // `${process.env.CLIENT_URL}/activate/${activationLink}`
+            // `${process.env.API_URL}/api/activate/${activationLink}`
+            await mailService.setActivationMail(email, `${process.env.CLIENT_URL}/activate/${activationLink}`)
             return res.json({link: activationLink, message: `Лист на пошту ${user.email} відправлено!`})
         } catch (e) {
             console.log(e.message)
@@ -22,8 +24,9 @@ class ActivateController {
     async activateAccount (req, res) {
         try {
             const {link} = req.params
+            console.log(link)
             await User.updateOne({link}, {isActivated: true})
-            return res.send('ok')
+            return res.json({message:'ok'})
         } catch (e) {
             console.log(e.message)
             return  res.status(500).json({message: 'Помилка сервера.'})

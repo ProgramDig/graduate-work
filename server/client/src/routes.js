@@ -7,6 +7,7 @@ import TeachPage from "./pages/TeachPage";
 import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/authModule/AuthPage";
 import RegPage from "./pages/authModule/RegPage";
+import ActivatePage from "./pages/ActivatePage";
 
 export const useRoutes = role => {
     switch (role) {
@@ -18,6 +19,7 @@ export const useRoutes = role => {
                     <Route path={'/scientific-employer'} element={<ScientificEmployerPage/>} exact/>
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
+                    <Route path={'/activate/:link'} element={<ActivatePage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
@@ -27,6 +29,7 @@ export const useRoutes = role => {
                     <Route path={'/department-head'} element={<DepartHeadPage/>} exact/>
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
+                    <Route path={'/activate/:link'} element={<ActivatePage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
@@ -36,6 +39,7 @@ export const useRoutes = role => {
                     <Route path={'/scientific-employer'} element={<ScientificEmployerPage/>} exact/>
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
+                    <Route path={'/activate/:link'} element={<ActivatePage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
@@ -44,6 +48,7 @@ export const useRoutes = role => {
                 <Routes>
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
+                    <Route path={'/activate/:link'} element={<ActivatePage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
@@ -52,6 +57,7 @@ export const useRoutes = role => {
                 <Routes>
                     <Route path={'/reg'} element={<RegPage/>} exact/>
                     <Route path={'/auth'} element={<AuthPage/>} exact/>
+                    <Route path={'/activate/:link'} element={<ActivatePage/>}/>
                     <Route path={'*'} element={<Navigate to='/auth' replace/>}/>
                 </Routes>
             )
