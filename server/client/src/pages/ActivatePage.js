@@ -14,12 +14,13 @@ const ActivatePage = () => {
     }, [error, message, clearError])
 
     const activate = async () => {
-        await request(
+        const data =await request(
             '/api/activate/' + params.link,
             'GET',
             null,
             {}
         )
+        message(data.message)
     }
 
     return (

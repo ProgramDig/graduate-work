@@ -26,7 +26,8 @@ class ActivateController {
             const {link} = req.params
             console.log(link)
             await User.updateOne({link}, {isActivated: true})
-            return res.json({message:'ok'})
+            // if(update .. )
+            return res.json({message:'Акаунт активовано.'})
         } catch (e) {
             console.log(e.message)
             return  res.status(500).json({message: 'Помилка сервера.'})
