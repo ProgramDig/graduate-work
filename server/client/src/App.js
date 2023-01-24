@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import 'materialize-css'
 
 function App() {
-
     const {token, login, logout, userId, role} = useAuth()
     const isAuth = !!token
     const routes = useRoutes(role)

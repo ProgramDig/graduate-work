@@ -6,11 +6,11 @@ const Links = (role) => {
         case 'ADMIN':
             return (
                 <>
-                    <li><NavLink to={'/admin'}>admin</NavLink></li>
-                    <li><NavLink to={'/department-head'}>depart-head</NavLink></li>
-                    <li><NavLink to={'/scientific-employer'}>scientific-employer</NavLink></li>
-                    <li><NavLink to={'/teacher'}>teacher</NavLink></li>
-                    <li><NavLink to={'/main'}>main</NavLink></li>
+                    <li><NavLink to={'/admin'}>Адмін панель</NavLink></li>
+                    <li><NavLink to={'/department-head'}>Начальник кафедри</NavLink></li>
+                    <li><NavLink to={'/scientific-employer'}>Навчальний відділ</NavLink></li>
+                    <li><NavLink to={'/teacher'}>Викладач</NavLink></li>
+                    <li><NavLink to={'/main'}>Основний</NavLink></li>
                 </>
             )
         case 'DEPARTMENT_HEAD':

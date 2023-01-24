@@ -8,6 +8,7 @@ import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/authModule/AuthPage";
 import RegPage from "./pages/authModule/RegPage";
 import ActivatePage from "./pages/ActivatePage";
+import UserAccountPage from "./pages/UserAccountPage";
 
 export const useRoutes = role => {
     switch (role) {
@@ -20,6 +21,7 @@ export const useRoutes = role => {
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
                     <Route path={'/activate/:link'} element={<ActivatePage/>}/>
+                    <Route path={'/account'} element={<UserAccountPage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
@@ -30,6 +32,7 @@ export const useRoutes = role => {
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
                     <Route path={'/activate/:link'} element={<ActivatePage/>}/>
+                    <Route path={'/account'} element={<UserAccountPage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
@@ -40,6 +43,7 @@ export const useRoutes = role => {
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
                     <Route path={'/activate/:link'} element={<ActivatePage/>}/>
+                    <Route path={'/account'} element={<UserAccountPage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
@@ -49,6 +53,7 @@ export const useRoutes = role => {
                     <Route path={'/teacher'} element={<TeachPage/>} exact/>
                     <Route path={'/main'} element={<MainPage/>} exact/>
                     <Route path={'/activate/:link'} element={<ActivatePage/>}/>
+                    <Route path={'/account'} element={<UserAccountPage/>}/>
                     <Route path={'*'} element={<Navigate to='/main' replace/>}/>
                 </Routes>
             )
