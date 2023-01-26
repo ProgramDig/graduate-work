@@ -1,5 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {rootReducer} from "./rootReducer";
-import {composeWithDevTools} from "redux-devtools-extension";
+import userSlice from "./userSlice";
 
-export default configureStore({reducer: rootReducer, middleware: [composeWithDevTools]})
+export default configureStore({
+    reducer: userSlice
+})

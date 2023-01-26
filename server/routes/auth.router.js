@@ -9,10 +9,10 @@ const router = new Router()
 // api/auth/..
 router.post('/registration', regValidation, authController.registration)
 router.post('/login', logValidation, authController.login)
+router.get('/users', authController.getUsers)
 
 // // role test
 // // auth users role: USER
-// router.get('/users',authMiddleware , authController.getUsers)
 // // login: admin22 pass: admin22
 // router.get('/admin', roleMiddleware(['ADMIN']), authController.getUsers)
 // // login: teacher22 pass: teacher22
