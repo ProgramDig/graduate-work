@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {removeUser, setUser} from "../redux/userSlice";
+import {removeUser, setUser, setUsers} from "../redux/userSlice";
 
 const LOCALSTORAGE_NAME = 'user'
 
@@ -20,7 +20,6 @@ export const useAuth = () => {
             token: jwtToken,
             user
         }))
-        console.log(user)
         dispatch(setUser({...user}))
     }, [])
 
@@ -28,6 +27,7 @@ export const useAuth = () => {
         setToken(null)
         setUserId(null)
         setRole(null)
+
         localStorage.removeItem(LOCALSTORAGE_NAME)
         dispatch(removeUser())
     }, [])

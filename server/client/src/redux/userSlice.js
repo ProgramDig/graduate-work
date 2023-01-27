@@ -23,9 +23,12 @@ const userSlice = createSlice({
         },
         removeUser(state) {
             state.user = DEFAULT_USER
+        },
+        setUsers(state, action) {
+            state.users = [...action.payload]
         }
     }
 })
 
-export const {setUser, removeUser} = userSlice.actions
+export const {setUser, removeUser, setUsers} = userSlice.actions
 export default userSlice.reducer
