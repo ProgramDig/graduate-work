@@ -75,7 +75,7 @@ class AuthController {
 
             const token = generateAccessToken(user._id, user.role)
 
-            return res.status(200).json({token, user: user._id, role: user.role, thisUser: user})
+            return res.status(200).json({token, user})
         } catch (e) {
             console.log(e.message)
             res.status(500).json({message: 'Промилка при вході.'})

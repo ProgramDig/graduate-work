@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useRoutes} from "./routes";
 import {useAuth} from "./hooks/auth.hook";
 import {AuthContext} from "./context/authContext";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import 'materialize-css'
-import Test from "./Test";
 
 function App() {
     const {token, login, logout, userId, role} = useAuth()
@@ -19,7 +18,6 @@ function App() {
                 {routes}
             </div>
             { isAuth && <Footer/>}
-            <Test/>
         </AuthContext.Provider>
     );
 }

@@ -25,9 +25,9 @@ const AuthPage = () => {
 
     const loginHandler = async () => {
         try {
-            const data = await request('api/auth/login', 'POST', {...form})
-            auth.login(data.token, data.userId, data.role)
-            message(data.message)
+            const response = await request('api/auth/login', 'POST', {...form})
+            auth.login(response.token, response.user)
+            message(response.message)
         } catch (e) {}
     }
     return (
