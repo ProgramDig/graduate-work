@@ -10,6 +10,7 @@ app.use(express.json())
 app.use('/api/auth', require('./routes/auth.router'))
 app.use('/api/admin', require('./routes/admin.router'))
 app.use('/api/activate', require('./routes/activate.router'))
+app.use('/api/user', require('./routes/user.router'))
 
 const start = async () => {
     try {

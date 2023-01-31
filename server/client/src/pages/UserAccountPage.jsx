@@ -45,11 +45,21 @@ const UserAccountPage = () => {
                     />
                     <div>{fullName}</div>
                 </div>
-                <div className="col s8">
+                <div className="col s4">
+                    <h6>Ваші дані</h6>
                     <div>Прізвище та ім'я: {fullName}</div>
                     <div>Логін: {login}</div>
                     <div>Пошта: {email}</div>
                     <div>Роль: {role}</div>
+                    <blockquote style={{borderColor: '#1e88e5'}}>
+                        Заміна ПІБ, логіну, пошти або ролі потребує підтвердження модератора.
+                    </blockquote>
+                    <blockquote style={{borderColor: '#1e88e5'}}>
+                        Заміна пошти потребує підтвердження на пошту після підвтеврдження модератора.
+                    </blockquote>
+                    <blockquote style={{borderColor: '#1e88e5'}}>
+                        Заміна паролю не потребує підтердження модератора.
+                    </blockquote>
                     <button
                         data-target="modal1"
                         className={'btn modal-trigger blue darken-1'}
@@ -57,6 +67,27 @@ const UserAccountPage = () => {
                         Змінити особисті дані
                     </button>
                     <Modal thisUser={user} updateUserHandler={updateHandler}/>
+                </div>
+                <div className="col s4">
+                    <h6>Змінити пароль</h6>
+                    <div className="input-field col s12">
+                        <input id="old-password" type="password" className="validate"/>
+                        <label htmlFor="old-password">Старий пароль</label>
+                    </div>
+
+                    <div className="input-field col s12">
+                        <input id="new-password" type="password" className="validate"/>
+                        <label htmlFor="new-password">Новий пароль</label>
+                    </div>
+                    <div className="input-field col s12">
+                        <input id="re-new-password" type="password" className="validate"/>
+                        <label htmlFor="re-new-password">Повтор нового паролю</label>
+                    </div>
+                    <button
+                        className={'btn blue darken-1'}
+                    >
+                        Змінити пароль
+                    </button>
                 </div>
             </div>
         </div>
