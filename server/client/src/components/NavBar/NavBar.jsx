@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
-import {AuthContext} from "../context/authContext";
-import Links from "./Links";
+import {AuthContext} from "../../context/authContext";
+import Links from "../Links";
 import {BiExit, BiUserCircle} from "react-icons/bi";
-
+import logo from "../../assets/lens_black_24dp.svg"
 const NavBar = () => {
     const auth = useContext(AuthContext)
     const logoutHandler = (event) => {
@@ -12,8 +12,8 @@ const NavBar = () => {
     }
     return (
         <nav>
-            <div className="nav-wrapper blue darken-1" style={{padding: '0 2rem'}}>
-                <span href="#" className="brand-logo">Лого</span>
+            <div className="nav-wrapper" style={{padding: '0 2rem', backgroundColor: "#2e3e50"}}>
+                <span href="#" className="brand-logo"><img src={logo} alt="logo"/></span>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <Links role={auth.role}/>
                     <li>

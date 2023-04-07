@@ -33,7 +33,7 @@ const UserAccountPage = () => {
     }
 
     return (
-        <div className={'row'}>
+        <div className={"container row"} style={{minHeight: "65vh"}}>
             <div className="col s12 center-align">
                 <h4>Особистий кабінет</h4>
             </div>

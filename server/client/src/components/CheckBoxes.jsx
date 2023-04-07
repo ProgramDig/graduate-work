@@ -59,7 +59,7 @@ const CheckBoxes = ({checkBoxVal, setCheckBoxVal, setForm, color}) => {
         <div className={''}>
             <p>
                 <label>
-                    <input type="checkbox" className="filled-in"
+                    <input type="checkbox" className="filled-in checkbox-blue-grey"
                            name={'role'}
                            value={'TEACHER'}
                            checked={checkedTeach}
@@ -69,7 +69,7 @@ const CheckBoxes = ({checkBoxVal, setCheckBoxVal, setForm, color}) => {
             </p>
             <p>
                 <label>
-                    <input type="checkbox" className="filled-in"
+                    <input type="checkbox" className="filled-in checkbox-blue-grey"
                            name={'role'}
                            value={'DEPARTMENT_HEAD'}
                            checked={checkedHead}
@@ -79,7 +79,7 @@ const CheckBoxes = ({checkBoxVal, setCheckBoxVal, setForm, color}) => {
             </p>
             <p>
                 <label>
-                    <input type="checkbox" className="filled-in"
+                    <input type="checkbox" className="filled-in checkbox-blue-grey"
                            name={'role'}
                            value={'SCIENTIFIC_EMPLOYER'}
                            checked={checkedEmployer}

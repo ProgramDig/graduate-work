@@ -1,0 +1,6 @@
+FROM node
+WORKDIR /app
+COPY ./server .
+RUN npm install
+EXPOSE 5000
+ENTRYPOINT npm run server

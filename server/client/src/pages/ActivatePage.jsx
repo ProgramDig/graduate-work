@@ -24,7 +24,7 @@ const ActivatePage = () => {
     }
 
     return (
-        <div>
+        <div className={"container"} style={{minHeight: "65vh"}}>
             <h1>Активація акаунта</h1>
             <h5><Link to={'auth'} onClick={activate}>Aктивувати</Link></h5>
         </div>

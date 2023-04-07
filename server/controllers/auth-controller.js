@@ -66,7 +66,7 @@ class AuthController {
 
             const validPassword = await bcrypt.compare(password, user.password)
             if(!validPassword) {
-                return res.status(400).json({message: `Введений неправельний пароль`})
+                return res.status(400).json({message: `Введений неправильний пароль`})
             }
 
             if(!user.isActivated){

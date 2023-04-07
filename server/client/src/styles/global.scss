@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(46, 62, 80);
+}
+
+input {
+  color: #fff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s !important;
+}
+
+input.yellow-input {
+  border-bottom: 1px solid #fff !important;
+  box-shadow: 0 1px 0 0 #fff !important;
+}
+
+input.yellow-input:focus {
+  border-bottom: 1px solid #F2546D !important;
+  box-shadow: 0 1px 0 0 #F2546D !important;
+}
+h1 {
+  margin-top: 0;
+  padding-top:0 ;
+}
+input.yellow-input + label {
+  color: #fff !important;
+}
+
+input.yellow-input:focus + label {
+  color: #F2546D !important;
+
+}
+
+.checkbox-blue-grey[type="checkbox"].filled-in:checked+span:not(.lever):after {
+  border: 2px solid #F2546D;
+  background-color: #F2546D;
+}

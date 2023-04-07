@@ -5,8 +5,8 @@ import DepartHeadPage from "./pages/DepartHeadPage";
 import ScientificEmployerPage from "./pages/ScientificEmployerPage";
 import TeachPage from "./pages/TeachPage";
 import MainPage from "./pages/MainPage";
-import AuthPage from "./pages/authModule/AuthPage";
-import RegPage from "./pages/authModule/RegPage";
+import AuthPage from "./pages/authModule/AuthPage/AuthPage";
+import RegPage from "./pages/authModule/RegPage/RegPage";
 import ActivatePage from "./pages/ActivatePage";
 import UserAccountPage from "./pages/UserAccountPage";
 

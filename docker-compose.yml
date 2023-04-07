@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:stable-alpine-perl
+    ports:
+      - "81:81"
+    environment:
+      - NGINX_PORT=81
+    volumes:
+      - ./templates:/etc/nginx/templates
+      - ./client:/app
+  server:
+    build:
+      context: .
+      dockerfile: ./Docker/DockerfileServer
+    container_name: server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+  front:
+    build:
+      context: .
+      dockerfile: ./Docker/DockerfileClient
+    container_name: client
+    restart: unless-stopped
+    ports:
+      - "3000:3000"

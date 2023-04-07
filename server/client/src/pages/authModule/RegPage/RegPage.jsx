@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {useHttp} from "../../hooks/http.hook";
-import {useMessage} from "../../hooks/message.hook";
+import {useHttp} from "../../../hooks/http.hook";
+import {useMessage} from "../../../hooks/message.hook";
 import {useNavigate} from "react-router-dom";
-import CheckBoxes from "../../components/CheckBoxes";
+import CheckBoxes from "../../../components/CheckBoxes";
+import classes from "../AuthPage/AuthPage.module.scss";
+import logo from "../../../assets/lens_black_24dp.svg";
 
 const RegPage = () => {
 
@@ -46,13 +48,18 @@ const RegPage = () => {
     }
 
     return (
-        <div>
-            <div className="row">
+        <div style={{backgroundColor: "#2e3e50"}}>
+            <div className="row container" >
                 <div className="col s6 offset-s3">
-                    <h1>Якийсь текст</h1>
-                    <div className="card blue darken-1">
+
+                    <h1 className={"center " + classes.title}  style={{marginTop: "40px"}}>
+                        <span style={{color:"#F2546D"}}>Digital</span>load
+                        <img width={60} src={logo} alt="logo"/>
+                    </h1>
+
+                    <div className={"card " + classes.myCard}>
                         <div className="card-content white-text">
-                            <span className="card-title">Реєстрація</span>
+                            <span className="card-title center"><strong>Реєстрація</strong></span>
                             <div>
                                 <div className="input-field">
                                     <input
@@ -111,9 +118,9 @@ const RegPage = () => {
                                 />
                             </div>
                         </div>
-                        <div className="card-action">
+                        <div className={"card-action " + classes.bnt_block}>
                             <button
-                                className={"btn gray lighten-1 black-text"}
+                                className={"btn white black-text"}
                                 onClick={registrationHandler}
                                 style={{marginRight: 10}}
                                 disabled={loading}
@@ -121,7 +128,8 @@ const RegPage = () => {
                                 Зареєструватись
                             </button>
                             <button
-                                className={"btn yellow darken-4"}
+                                className={"btn black-text"}
+                                style={{backgroundColor: "#F2546D"}}
                                 onClick={() => {
                                     navigate('/auth')
                                 }}
