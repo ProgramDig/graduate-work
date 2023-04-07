@@ -123,7 +123,8 @@ const Table = () => {
     return (
         <>
             <button
-                className={'btn blue darken-1'}
+                className={'btn'}
+                style={{backgroundColor: "#F2546D"}}
                 onClick={refreshHandler}
                 disabled={loading}
             >

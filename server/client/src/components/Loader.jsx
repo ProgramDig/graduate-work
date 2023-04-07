@@ -7,7 +7,7 @@ const Loader = ({loading}) => {
                 loading ?
                     <>
                         <div className="progress">
-                            <div className="indeterminate blue darken-1" style={{width: '100%'}}></div>
+                            <div className="indeterminate  red lighten-1" style={{width: '100%'}}></div>
                         </div>
                     </>
                     :

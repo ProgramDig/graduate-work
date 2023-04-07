@@ -6,7 +6,7 @@ const AdminPage = () => {
 
     return (
         <div className={"container"} style={{minHeight: "65vh"}}>
-            <h1>Адмін панель</h1>
+            <h1 className={"center"} style={{color: "#2E3E50"}}>Адмін панель</h1>
             <Table/>
         </div>
     );
