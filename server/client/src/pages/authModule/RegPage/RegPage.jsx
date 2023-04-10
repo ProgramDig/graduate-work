@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useHttp} from "../../../hooks/http.hook";
 import {useMessage} from "../../../hooks/message.hook";
 import {useNavigate} from "react-router-dom";
-import CheckBoxes from "../../../components/CheckBoxes";
+import CheckBoxes from "../../../components/CheckBoxes/CheckBoxes";
 import classes from "../AuthPage/AuthPage.module.scss";
 import logo from "../../../assets/lens_black_24dp.svg";
 

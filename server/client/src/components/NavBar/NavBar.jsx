@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../context/authContext";
-import Links from "../Links";
+import Links from "../Links/Links";
 import {BiExit, BiUserCircle} from "react-icons/bi";
 import logo from "../../assets/lens_black_24dp.svg"
 const NavBar = () => {

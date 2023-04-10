@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import CheckBoxes from "./CheckBoxes";
+import CheckBoxes from "../CheckBoxes/CheckBoxes";
 
 const Modal = ({thisUser, updateUserHandler}) => {
     const [checkBoxVal, setCheckBoxVal] = useState('TEACHER')
@@ -58,6 +58,7 @@ const Modal = ({thisUser, updateUserHandler}) => {
         <div>
             <div id="modal1" className="modal">
                 <div className="modal-content">
+                    <h4 className={"title center"}>Зміна особистих даних</h4>
                     <div className="row">
                         <form className="col s12">
                             <div className="row">

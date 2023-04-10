@@ -8,7 +8,7 @@ import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/authModule/AuthPage/AuthPage";
 import RegPage from "./pages/authModule/RegPage/RegPage";
 import ActivatePage from "./pages/ActivatePage";
-import UserAccountPage from "./pages/UserAccountPage";
+import UserAccountPage from "./pages/UserAccountPage/UserAccountPage";
 
 export const useRoutes = role => {
     switch (role) {

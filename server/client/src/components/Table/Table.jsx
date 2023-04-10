@@ -2,11 +2,11 @@ import React, {useEffect, useRef, useState} from 'react';
 import {BsFillTrashFill} from "react-icons/bs";
 import {BiPencil} from "react-icons/bi";
 import {MdOutgoingMail} from "react-icons/md";
-import {useHttp} from "../hooks/http.hook";
-import {useMessage} from "../hooks/message.hook";
-import Loader from "./Loader";
-import Search from "./Search";
-import Modal from "./Modal";
+import {useHttp} from "../../hooks/http.hook";
+import {useMessage} from "../../hooks/message.hook";
+import Loader from "../Loader/Loader";
+import Search from "../Search/Search";
+import Modal from "../Modal/Modal";
 
 
 const Table = () => {

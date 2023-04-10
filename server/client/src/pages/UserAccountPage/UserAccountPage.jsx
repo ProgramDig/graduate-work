@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import Modal from "../components/Modal";
-import {useHttp} from "../hooks/http.hook";
-import {setUser} from "../redux/userSlice";
-import {useMessage} from "../hooks/message.hook";
+import Modal from "../../components/Modal/Modal";
+import {useHttp} from "../../hooks/http.hook";
+import {setUser} from "../../redux/userSlice";
+import {useMessage} from "../../hooks/message.hook";
+import classes from "./UserAccountPage.module.scss"
+import InfoModal from "../../components/InfoModal/InfoModal";
 
 const UserAccountPage = () => {
     const dispatch = useDispatch()
@@ -15,7 +17,7 @@ const UserAccountPage = () => {
 
     useEffect(() => {
         window.M.AutoInit()
-    },[])
+    }, [])
 
     const updateHandler = async (user) => {
         const response = await request(
@@ -35,7 +37,7 @@ const UserAccountPage = () => {
     return (
         <div className={"container row"} style={{minHeight: "65vh"}}>
             <div className="col s12 center-align">
-                <h4>Особистий кабінет</h4>
+                <h4 className="title">Особистий кабінет</h4>
             </div>
             <div className="row">
                 <div className="col s4 center-align">
@@ -43,29 +45,30 @@ const UserAccountPage = () => {
                          src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
                          width={'250'} alt="user image"
                     />
-                    <div>{fullName}</div>
+                    <div className={classes.infoItem}><strong>{fullName}</strong></div>
                 </div>
                 <div className="col s4">
-                    <h6>Ваші дані</h6>
-                    <div>Прізвище та ім'я: {fullName}</div>
-                    <div>Логін: {login}</div>
-                    <div>Пошта: {email}</div>
-                    <div>Роль: {role}</div>
-                    <blockquote style={{borderColor: '#1e88e5'}}>
-                        Заміна ПІБ, логіну, пошти або ролі потребує підтвердження модератора.
-                    </blockquote>
-                    <blockquote style={{borderColor: '#1e88e5'}}>
-                        Заміна пошти потребує підтвердження на пошту після підвтеврдження модератора.
-                    </blockquote>
-                    <blockquote style={{borderColor: '#1e88e5'}}>
-                        Заміна паролю не потребує підтердження модератора.
-                    </blockquote>
-                    <button
-                        data-target="modal1"
-                        className={'btn modal-trigger blue darken-1'}
-                    >
-                        Змінити особисті дані
-                    </button>
+                    <div className={classes.infoItem}><strong>Прізвище та ім'я:</strong> {fullName}</div>
+                    <div className={classes.infoItem}><strong>Логін:</strong> {login}</div>
+                    <div className={classes.infoItem}><strong>Пошта:</strong> {email}</div>
+                    <div className={classes.infoItem}><strong>Роль:</strong> {role}</div>
+                    <div className={classes.btnBlock}>
+                        <button
+                            data-target="modal2"
+                            className={'btn modal-trigger blue darken-1 us-btn'}
+                            style={{marginBottom: 10}}
+                        >
+                            Інформація користувача
+                        </button>
+                        <button
+                            data-target="modal1"
+                            className={'btn modal-trigger blue darken-1 us-btn'}
+                        >
+                              Змінити особистих даних
+                        </button>
+                    </div>
+
+                    <InfoModal/>
                     <Modal thisUser={user} updateUserHandler={updateHandler}/>
                 </div>
                 <div className="col s4">
