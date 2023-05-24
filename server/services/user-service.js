@@ -16,13 +16,15 @@ class UserService {
         if (password !== rePassword) {
             throw new Error({status: 400, message: 'Паролі не співпадають.'})
         }
-        let uniq_key = await User.findOne({uuid4()});
+        let uniq_id = uuid4();
+        let uniq_key = await User.findOne({uniq_id});
         while(uniq_key) {
-            uniq_key = await User.findOne({uuid4()});
+            uniq_id = uuid4();
+            uniq_key = await User.findOne({uniq_id});
         }
         const hashPassword = await bcrypt.hash(password, 5)
         const {value} = new Role({value: role})
-        const user = new User({email, fullName, login, password: hashPassword, role: value, uniq_key: uniq_key})
+        const user = new User({email, fullName, login, password: hashPassword, role: value, uniq_key: uniq_id})
         return await user.save()
     }
     async updateUser () {}
