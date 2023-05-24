@@ -7,8 +7,8 @@ const Links = (role) => {
             return (
                 <>
                     <li><NavLink to={'/admin'}>Адмін панель</NavLink></li>
-                    <li><NavLink to={'/department-head'}>Начальник кафедри</NavLink></li>
-                    <li><NavLink to={'/scientific-employer'}>Навчальний відділ</NavLink></li>
+                    {/*<li><NavLink to={'/department-head'}>Начальник кафедри</NavLink></li>*/}
+                    {/*<li><NavLink to={'/scientific-employer'}>Навчальний відділ</NavLink></li>*/}
                     <li><NavLink to={'/teacher'}>Викладач</NavLink></li>
                     <li><NavLink to={'/main'}>Основний</NavLink></li>
                 </>

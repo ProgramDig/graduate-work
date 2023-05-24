@@ -20,7 +20,7 @@ class AuthController {
             const candidateEmail = await User.findOne({email})
 
             if(candidateLogin) {
-                return res.status(400).json({message: 'Користувач з таким логіном вже створений.'})
+                return res.status(400).json({messageсв: 'Користувач з таким логіном вже створений.'})
             }
 
             if(candidateEmail) {

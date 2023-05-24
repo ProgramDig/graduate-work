@@ -5,10 +5,8 @@ const MainPage = () => {
     const json = JSON.parse(obj)
     return (
         <div className={"container"} style={{minHeight: "65vh"}}>
-            <h1>main</h1>
-            <div>
-                {json.role}
-            </div>
+            <h1 className={"title"}>Головна </h1>
+
         </div>
     );
 };

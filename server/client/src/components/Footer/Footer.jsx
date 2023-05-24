@@ -6,10 +6,10 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col l6 s12">
-                        <h5 className="white-text">Права</h5>
-                        <p className="grey-text text-lighten-4">
-                            © 2023 Digitalload. Усі права захищені. Всі матеріали на цьому сайті є власністю Digitalload і не можуть бути використані без нашої згоди.
-                        </p>
+                        <h5 className="white-text">© 2023 Digitalload.</h5>
+                        {/*<p className="grey-text text-lighten-4">*/}
+                        {/*    © 2023 Digitalload. Усі права захищені. Всі матеріали на цьому сайті є власністю Digitalload і не можуть бути використані без нашої згоди.*/}
+                        {/*</p>*/}
                     </div>
                     <div className="col l4 offset-l2 s12">
                         <h5 className="white-text">Посилання</h5>

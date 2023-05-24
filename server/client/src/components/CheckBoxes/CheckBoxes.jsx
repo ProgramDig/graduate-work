@@ -78,14 +78,14 @@ const CheckBoxes = ({checkBoxVal, setCheckBoxVal, setForm, color}) => {
                 </label>
             </p>
             <p>
-                <label>
-                    <input type="checkbox" className="filled-in checkbox-blue-grey"
-                           name={'role'}
-                           value={'SCIENTIFIC_EMPLOYER'}
-                           checked={checkedEmployer}
-                           onChange={handleChangeCheckedEmployer}/>
-                    <span style={{color: color}}>Представник навчального відділу</span>
-                </label>
+                {/*<label>*/}
+                {/*    <input type="checkbox" className="filled-in checkbox-blue-grey"*/}
+                {/*           name={'role'}*/}
+                {/*           value={'SCIENTIFIC_EMPLOYER'}*/}
+                {/*           checked={checkedEmployer}*/}
+                {/*           onChange={handleChangeCheckedEmployer}/>*/}
+                {/*    <span style={{color: color}}>Представник навчального відділу</span>*/}
+                {/*</label>*/}
             </p>
         </div>
     );
