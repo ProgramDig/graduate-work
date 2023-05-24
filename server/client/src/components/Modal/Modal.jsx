@@ -68,8 +68,9 @@ const Modal = ({thisUser, updateUserHandler}) => {
                                         name="fullName"
                                         type="text"
                                         value={fullName}
-                                        className="validate"
+                                        className="validate black-input"
                                         onChange={changeFullNameHandler}
+                                        style={{color: "black"}}
                                     />
                                     <label htmlFor="fullName" className="active">ПІБ</label>
                                 </div>
@@ -79,8 +80,10 @@ const Modal = ({thisUser, updateUserHandler}) => {
                                         name="login"
                                         type="text"
                                         value={login}
-                                        className="validate"
+                                        className="validate black-input"
                                         onChange={changeLoginNameHandler}
+                                        style={{color: "black"}}
+
                                     />
                                     <label htmlFor="login" className="active">Логін</label>
                                 </div>
@@ -92,8 +95,10 @@ const Modal = ({thisUser, updateUserHandler}) => {
                                         name="email"
                                         type="email"
                                         value={email}
-                                        className="validate"
+                                        className="validate black-input"
                                         onChange={changeEmailNameHandler}
+                                        style={{color: "black"}}
+
                                     />
                                     <label htmlFor="email" className="active">Пошта</label>
                                 </div>
