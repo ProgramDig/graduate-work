@@ -6,8 +6,8 @@ const MAX = 32
 const EMAIL_MESSAGE = `Некоректний email.`
 const LOGIN_MESSAGE = `Довжина логіна має бути більше ніж ${MIN} символів і менша ніж ${MAX} та не має містити спец символів окрім "-", ".", "_".`
 
-const FULL_NAME_MESSAGE = `Некоректно введений ПІБ. Приклад: Анохін Дмитро.`
-    const FULL_NAME_REGEXP = /^([A-z]{1})([a-z]{1,30})\s([A-z]{1}[a-z]{1,30})$/ // fix
+// const FULL_NAME_MESSAGE = `Некоректно введений ПІБ. Приклад: Анохін Дмитро.`
+//     const FULL_NAME_REGEXP = /^([A-z]{1})([a-z]{1,30})\s([A-z]{1}[a-z]{1,30})$/ // fix
 
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const NICKNAME_REGEX = /^[A-Za-z0-9]+([A-Za-z0-9]*|[._-]?[A-Za-z0-9]+)*$/;
@@ -23,7 +23,7 @@ const regValidation = [
         .isLength({min: MIN, max: MAX})
         .matches(NICKNAME_REGEX)
         .withMessage('Видаліть спецсимволи'),
-    check('fullName', FULL_NAME_MESSAGE).matches(FULL_NAME_REGEXP),
+    // check('fullName', FULL_NAME_MESSAGE).matches(FULL_NAME_REGEXP),
     check('password', PASSWORD_MESSAGE).isLength({min: MIN, max: MAX}),
     check('role', ROLE_MESSAGE).isIn(ROLES)
 ]
@@ -51,7 +51,7 @@ const updateValidation = [
         .isLength({min: MIN, max: MAX})
         .matches(NICKNAME_REGEX)
         .withMessage('Видаліть спецсимволи'),
-    check('fullName', FULL_NAME_MESSAGE).matches(FULL_NAME_REGEXP),
+    // check('fullName', FULL_NAME_MESSAGE).matches(FULL_NAME_REGEXP),
 ];
 
 module.exports = {regValidation, logValidation, updateValidation}

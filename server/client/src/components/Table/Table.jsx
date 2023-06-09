@@ -121,7 +121,7 @@ const Table = () => {
     }
 
     return (
-        <>
+        <div style={{border: "5px solid #2E3E50", borderRadius: 15, padding: 15, marginBottom:15}}>
             <button
                 className={'btn'}
                 style={{backgroundColor: "#F2546D"}}
@@ -158,7 +158,7 @@ const Table = () => {
                         !filteredForm &&
                         <div>
                             <h2 className="center-align">
-                                Користувачів немає
+
                             </h2>
                         </div>
                     }
@@ -206,7 +206,7 @@ const Table = () => {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
 );
 };
 

@@ -54,3 +54,10 @@ input.black-input:focus + label {
   border: 2px solid #F2546D;
   background-color: #F2546D;
 }
+
+tr{
+  border-bottom: 3px solid #2E3E50;
+  &:last-child {
+    border: none;
+  }
+}

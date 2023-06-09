@@ -15,7 +15,7 @@ const App = () => {
         <AuthContext.Provider value={{token, login, logout, userId, role, isAuth}}>
             {isAuth && <NavBar/>}
             <div style={{backgroundColor: "#ffffff"}}>
-                    {routes}
+                {routes}
             </div>
             {isAuth && <Footer/>}
         </AuthContext.Provider>
