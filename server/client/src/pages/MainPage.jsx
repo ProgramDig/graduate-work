@@ -6,7 +6,6 @@ const MainPage = () => {
     return (
         <div className={"container"} style={{minHeight: "65vh"}}>
             <h1 className={"title"}>Головна </h1>
-
         </div>
     );
 };
