@@ -15,6 +15,7 @@
     "react-doc-viewer": "^0.1.5",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-pdf": "^7.1.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
